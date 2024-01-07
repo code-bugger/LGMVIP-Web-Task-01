@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-List</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Your ToDo Lists</h2>
+        <div class="main">
+            <input type="text" placeholder="Enter Your ToDo" pInputText [(ngModel)]="newTodo" />
+            <p-button label="Add" (click)="saveTodo()"></p-button>
+        </div>
+        
+        <div *ngFor="let todo of todos" >
+            <div [class]="{'completed': todo.isCompleted}" class="todos-list">
+                <h3 class="task-item">{{ todo.name }}</h3>
+                <i class="pi pi-check" style="font-size: 1.5rem" *ngIf="!todo.isCompleted"
+                (click)="completeTask(todo.name)"></i>
+                <i class="pi pi-times" style="font-size: 1.5rem; color: red;" (click)="removeTask(todo.name)"></i>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
